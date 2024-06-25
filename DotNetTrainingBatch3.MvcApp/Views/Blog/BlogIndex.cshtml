@@ -6,14 +6,17 @@
 }
 
 <h1>Blog Page</h1>
+<a href="/Blog/Create" class="btn btn-primary m-auto">Add New</a>
 
 <table class="table">
     <thead>
         <tr>
             <th scope="col">#</th>
+            <th scope="col">ID</th>
             <th scope="col">Title</th>
             <th scope="col">Author</th>
             <th scope="col">Content</th>
+            <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -21,9 +24,14 @@
         {
             <tr>
                 <th scope="row">@(+count)</th>
+                <td>@item.BlogId</td>
                 <td>@item.BlogTitle</td>
                 <td>@item.BlogAuthor</td>
                 <td>@item.BlogContent</td>
+                <td>
+                    <a href="/Blog/Edit/@item.BlogId" class="btn btn-warning">Edit</a>
+                    <a href="/Blog/Delete/@item.BlogId" class="btn btn-danger">Delete</a>
+                </td>
             </tr>
         }              
     </tbody>
