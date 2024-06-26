@@ -1,14 +1,10 @@
-﻿
-using DotNetTrainingBatch3.MvcApp.Db;
+﻿using DotNetTrainingBatch3.MvcApp.Db;
 using DotNetTrainingBatch3.MvcApp.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DotNetTrainingBatch3.MvcApp.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class EFCoreBlogController : ControllerBase
+    public class EFCoreBlogController : Controller
     {
         private readonly AppDbContext _appDbContext;
 
@@ -17,95 +13,64 @@ namespace DotNetTrainingBatch3.MvcApp.Controllers
             _appDbContext = new AppDbContext();
         }
 
-        [HttpPost]
-        public IActionResult CreateBlog(BlogModel blog)
-        {
-            _appDbContext.Add(blog);
-            var result = _appDbContext.SaveChanges();
-
-            string message = result > 0 ? "Saving Successful!" : "Saving Failed!";
-            return Ok(message);
-        }
-
-        [HttpGet]
-        public IActionResult Read()
+        [ActionName("Index")]
+        public IActionResult BlogIndex()
         {
             List<BlogModel> lst = _appDbContext.Blogs.ToList();
-            return Ok(lst);
+            return View("BlogIndex",lst);
         }
 
-        [HttpGet("{id}")]
-        public IActionResult Edit(int id)
+        [ActionName("Edit")]
+        public IActionResult BlogEdit(int id)
         {
-            var blog = _appDbContext.Blogs.FirstOrDefault(x => x.BlogId == id);
-            if (blog is null)
-            {
-                return NotFound("No Data Fond!");
-            }
-            return Ok(blog);
+            BlogModel item = _appDbContext.Blogs.FirstOrDefault(x => x.BlogId == id);
+            return View("BlogEdit", item);
         }
 
-
-        [HttpPut("{id}")]
-        public IActionResult UpdateBlog(int id, BlogModel blogModel)
+        [HttpPost]
+        [ActionName("Update")]
+        public IActionResult BlogUpdate(int id,BlogModel blog)
         {
-            var blog = _appDbContext.Blogs.FirstOrDefault(x => x.BlogId == id);
-            if (blog is null)
+            BlogModel item = _appDbContext.Blogs.FirstOrDefault(x => x.BlogId == id);
+            /*if(item is null)
             {
-                return NotFound("No Data Fond!");
-            }
+                return Redirect("/Blog");
+            }*/
+            item.BlogTitle = blog.BlogTitle;
+            item.BlogAuthor = blog.BlogAuthor;
+            item.BlogContent = blog.BlogContent;
 
-            blog.BlogTitle = blogModel.BlogTitle;
-            blog.BlogAuthor = blogModel.BlogAuthor;
-            blog.BlogContent = blogModel.BlogContent;
+            /*_appDbContext.Blogs.Update(item);*/
+            _appDbContext.SaveChanges();
 
-            int result = _appDbContext.SaveChanges();
-            string message = result > 0 ? "Updating Successful!" : "Updating Failed!";
-            return Ok(message);
+            return Redirect("/EFCoreBlog");
         }
 
-        [HttpPatch("{id}")]
-        public IActionResult PatchBlog(int id, BlogModel blogModel)
-        {
-            var blog = _appDbContext.Blogs.FirstOrDefault(x => x.BlogId == id);
-            if (blog is null)
-            {
-                return NotFound("No Data Fond!");
-            }
-
-            if (!string.IsNullOrEmpty(blogModel.BlogTitle))
-            {
-                blog.BlogTitle = blogModel.BlogTitle;
-            }
-
-            if (!string.IsNullOrEmpty(blogModel.BlogAuthor))
-            {
-                blog.BlogAuthor = blogModel.BlogAuthor;
-
-            }
-
-            if (!string.IsNullOrEmpty(blogModel.BlogContent))
-            {
-                blog.BlogContent = blogModel.BlogContent;
-            }
-
-            int result = _appDbContext.SaveChanges();
-            string message = result > 0 ? "Updating Successful!" : "Updating Failed!";
-            return Ok(message);
+        [ActionName("Create")]
+        public IActionResult BlogCreate()
+        {            
+            return View("BlogCreate");
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult DeleteBlog(int id)
+        [HttpPost]
+        [ActionName("Save")]
+        public IActionResult BlogSave(BlogModel blog)
         {
-            var blog = _appDbContext.Blogs.FirstOrDefault(x => x.BlogId == id);
-            if (blog is null)
-            {
-                return NotFound("No Data Fond!");
-            }
-            _appDbContext.Remove(blog);
-            int result = _appDbContext.SaveChanges();
-            string message = result > 0 ? "Deleting Successful!" : "Deleting Failed!";
-            return Ok(message);
+            _appDbContext.Blogs.Add(blog);
+            _appDbContext.SaveChanges();
+
+            return Redirect("/EFCoreBlog");
+        }
+
+        [ActionName("Delete")]
+        public IActionResult BlogDelete(int id)
+        {
+            var item = _appDbContext.Blogs.FirstOrDefault(x => x.BlogId == id);
+
+            _appDbContext.Blogs.Remove(item);
+            _appDbContext.SaveChanges();
+
+            return Redirect("/EFCoreBlog");
         }
     }
 }

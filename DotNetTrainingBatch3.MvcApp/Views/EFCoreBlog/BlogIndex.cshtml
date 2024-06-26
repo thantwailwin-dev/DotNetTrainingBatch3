@@ -6,7 +6,7 @@
 }
 
 <h1>Blog Page</h1>
-<a href="/Blog/Create" class="btn btn-primary m-auto">Add New</a>
+<a href="/EFCoreBlog/Create" class="btn btn-primary m-auto">Add New</a>
 
 <table class="table">
     <thead>
@@ -29,8 +29,8 @@
                 <td>@item.BlogAuthor</td>
                 <td>@item.BlogContent</td>
                 <td>
-                    <a href="/Blog/Edit/@item.BlogId" class="btn btn-warning">Edit</a>
-                    <a href="/Blog/Delete/@item.BlogId" class="btn btn-danger">Delete</a>
+                    <a href="/EFCoreBlog/Edit/@item.BlogId" class="btn btn-warning">Edit</a>
+                    <a href="/EFCoreBlog/Delete/@item.BlogId" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         }              
