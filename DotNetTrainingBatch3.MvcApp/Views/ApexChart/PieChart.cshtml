@@ -1,0 +1,47 @@
+﻿@{   
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+    ViewData["Title"] = "Blog";
+}
+@model ApexChartPieChartResponseModel
+@{
+    //int[] _series1 = new int[] { 44, 55, 13, 43, 22 };
+    //List<int> _series2 = new List<int> { 44, 55, 13, 43, 22 };
+    //List<string> _labels = new List<string> { "Team A", "Team B", "Team C", "Team D", "Team E" };
+
+    List<int> _series2 = Model.Series;
+    List<string> _labels = Model.Lables;
+}
+
+<div id="chart"></div>
+
+@section scripts{
+
+    <script>
+        let _series = @Html.Raw(JsonConvert.SerializeObject(_series2));
+        let _labels = @Html.Raw(JsonConvert.SerializeObject(_labels));
+
+        var options = {
+            series: [44, 55, 13, 43, 22],
+            chart: {
+                width: 380,
+                type: 'pie',
+            },
+            labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
+                    },
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }]
+        };
+
+        var chart = new ApexCharts(document.querySelector("#chart"), options);
+        chart.render();
+    </script>
+
+}
