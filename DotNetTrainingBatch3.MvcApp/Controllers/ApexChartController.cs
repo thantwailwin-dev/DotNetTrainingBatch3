@@ -6,6 +6,13 @@ namespace DotNetTrainingBatch3.MvcApp.Controllers
 {
     public class ApexChartController : Controller
     {
+        public readonly AppDbContext db;
+
+        public ApexChartController(AppDbContext db)
+        {
+            this.db = db;
+        }
+
         public IActionResult PieChart()
         {
             ApexChartPieChartResponseModel model = new ApexChartPieChartResponseModel() 
@@ -19,8 +26,8 @@ namespace DotNetTrainingBatch3.MvcApp.Controllers
 
         public IActionResult DashedLineChart()
         {
-            AppDbContext appDbContext = new AppDbContext();
-            var lst = appDbContext.PageStatistics.ToList();
+            /*AppDbContext appDbContext = new AppDbContext();*/
+            var lst = db.PageStatistics.ToList();
             ApexChartDashedLineResponseModel model = new ApexChartDashedLineResponseModel();
             List<ApexChartDashedLineModel> lstSeries = new List<ApexChartDashedLineModel>();
 
@@ -40,7 +47,7 @@ namespace DotNetTrainingBatch3.MvcApp.Controllers
 
         public IActionResult RadarChart()
         {
-            AppDbContext db= new AppDbContext();
+            /*AppDbContext db= new AppDbContext();*/
             var lst = db.Radars.ToList();
 
             ApexChartRadarResponseModel model = new ApexChartRadarResponseModel();

@@ -6,11 +6,18 @@ namespace DotNetTrainingBatch3.MvcApp.Controllers
 {
 	public class BlogPaginationController : Controller
     {
+        private readonly AppDbContext db;
+
+        public BlogPaginationController(AppDbContext db)
+        {
+            this.db = db;
+        }
+
         [ActionName("Index")]
         public IActionResult BlogIndex(int pageNo = 1,int pageSize = 10)
 		{
-            AppDbContext _appDbContext = new AppDbContext();
-            int rowCount = _appDbContext.Blogs.Count();
+            /*AppDbContext _appDbContext = new AppDbContext();*/
+            int rowCount = db.Blogs.Count();
             int pageCount = rowCount / pageSize;
 
             if (rowCount % pageSize > 0)
@@ -22,7 +29,7 @@ namespace DotNetTrainingBatch3.MvcApp.Controllers
             }
 
 
-            List<BlogModel> lst = _appDbContext.Blogs
+            List<BlogModel> lst = db.Blogs
                 /*.OrderByDescending(x => x.BlogId)*/
                 .Skip((pageNo - 1) * pageSize)
                 .Take(pageSize)

@@ -12,9 +12,9 @@ namespace DotNetTrainingBatch3.MvcApp.Controllers
     {
         private readonly AppDbContext _appDbContext;
 
-        public EFCoreBlogApiController()
+        public EFCoreBlogApiController(AppDbContext appDbContext)
         {
-            _appDbContext = new AppDbContext();
+            _appDbContext = appDbContext;
         }
 
         [HttpPost]

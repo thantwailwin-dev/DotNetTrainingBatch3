@@ -8,9 +8,9 @@ namespace DotNetTrainingBatch3.MvcApp.Controllers
     {
         private readonly AppDbContext _appDbContext;
 
-        public EFCoreBlogAjaxController()
+        public EFCoreBlogAjaxController(AppDbContext appDbContext)
         {
-            _appDbContext = new AppDbContext();
+            _appDbContext = appDbContext;
         }
 
         [ActionName("Index")]

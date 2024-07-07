@@ -9,13 +9,13 @@ namespace DotNetTrainingBatch3.MvcApp.Services
 {
     public class ConnectionStrings
     {
-        public static SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
+        /*public static SqlConnectionStringBuilder sqlConnectionStringBuilder = new SqlConnectionStringBuilder()
         {
             DataSource = ".",
             InitialCatalog = "AceInternship",
             UserID = "sa",
             Password = "twl@123",
             TrustServerCertificate = true
-        };
+        };*/
     }
 }

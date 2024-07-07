@@ -10,12 +10,17 @@ using System.Threading.Tasks;
 
 namespace DotNetTrainingBatch3.MvcApp.Db
 {
-    internal class AppDbContext : DbContext
+    public class AppDbContext : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
+        {
+
+        }
+
+        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(ConnectionStrings.sqlConnectionStringBuilder.ConnectionString);
-        }
+        }*/
 
         public DbSet<BlogModel> Blogs { get; set; }
         public DbSet<PageStatisticsModel> PageStatistics { get; set; }
