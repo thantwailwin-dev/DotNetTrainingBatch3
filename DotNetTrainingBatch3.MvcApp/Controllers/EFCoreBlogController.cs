@@ -23,7 +23,7 @@ namespace DotNetTrainingBatch3.MvcApp.Controllers
         [ActionName("Edit")]
         public IActionResult BlogEdit(int id)
         {
-            BlogModel item = _appDbContext.Blogs.FirstOrDefault(x => x.BlogId == id);
+            BlogModel item = _appDbContext.Blogs.FirstOrDefault(x => x.BlogId == id)!;
             return View("BlogEdit", item);
         }
 
@@ -31,7 +31,7 @@ namespace DotNetTrainingBatch3.MvcApp.Controllers
         [ActionName("Update")]
         public IActionResult BlogUpdate(int id,BlogModel blog)
         {
-            BlogModel item = _appDbContext.Blogs.FirstOrDefault(x => x.BlogId == id);
+            BlogModel item = _appDbContext.Blogs.FirstOrDefault(x => x.BlogId == id)!;
             /*if(item is null)
             {
                 return Redirect("/Blog");
