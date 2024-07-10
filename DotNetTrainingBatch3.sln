@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetTrainingBatch3.UI", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetTrainingBatch3.ChatApp", "DotNetTrainingBatch3.ChatApp\DotNetTrainingBatch3.ChatApp.csproj", "{A5EC6FAE-9025-4C99-A487-7372D1EEBCD9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetTrainingBatch3.RealtimeChatApp", "DotNetTrainingBatch3.RealtimeChatApp\DotNetTrainingBatch3.RealtimeChatApp.csproj", "{05AC178C-ACCB-4628-979B-A6A6CCB0769D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A5EC6FAE-9025-4C99-A487-7372D1EEBCD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5EC6FAE-9025-4C99-A487-7372D1EEBCD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5EC6FAE-9025-4C99-A487-7372D1EEBCD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05AC178C-ACCB-4628-979B-A6A6CCB0769D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05AC178C-ACCB-4628-979B-A6A6CCB0769D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05AC178C-ACCB-4628-979B-A6A6CCB0769D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05AC178C-ACCB-4628-979B-A6A6CCB0769D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
