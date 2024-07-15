@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetTrainingBatch3.Blazor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetTrainingBatch3.BlazorClientServer.Shared", "DotNetTrainingBatch3.BlazorClientServer\Shared\DotNetTrainingBatch3.BlazorClientServer.Shared.csproj", "{9AF54010-22D2-4D99-A0A8-8398B2EE8FA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetTrainingBatch3.BlazorWasmAppV2", "DotNetTrainingBatch3.BlazorWasmAppV2\DotNetTrainingBatch3.BlazorWasmAppV2.csproj", "{EA4D14ED-38F1-4B38-BE3C-1AD08F72D6D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{9AF54010-22D2-4D99-A0A8-8398B2EE8FA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9AF54010-22D2-4D99-A0A8-8398B2EE8FA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9AF54010-22D2-4D99-A0A8-8398B2EE8FA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA4D14ED-38F1-4B38-BE3C-1AD08F72D6D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA4D14ED-38F1-4B38-BE3C-1AD08F72D6D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA4D14ED-38F1-4B38-BE3C-1AD08F72D6D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA4D14ED-38F1-4B38-BE3C-1AD08F72D6D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
